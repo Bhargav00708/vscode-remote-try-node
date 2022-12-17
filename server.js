@@ -11,10 +11,15 @@ const express = require('express');
 const PORT = 3000;
 const HOST = '0.0.0.0';
 
-// App
+// App  
 const app = express();
+app.set('trust proxy', true)
 app.get('/', (req, res) => {
 	res.send('Hello remote world!\n');
+});
+
+app.get('/userIp', (req, res) => {
+	res.send(`${req.ip}`);
 });
 
 app.listen(PORT, HOST);
